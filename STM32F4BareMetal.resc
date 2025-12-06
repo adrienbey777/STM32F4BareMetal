@@ -1,0 +1,16 @@
+using sysbus
+
+# Crée une instance de machine nommée STM32F4BareMetal
+mach create "STM32F4BareMetal"
+
+# Charge la description matérielle de la carte STM32F4 Discovery
+machine LoadPlatformDescription @platforms/boards/stm32f4_discovery.repl
+
+# Charge ton firmware compilé (ELF)
+sysbus LoadELF @build/firmware.elf
+
+# Affiche un terminal virtuel pour le UART2
+showAnalyzer sysbus.usart2
+
+# Démarre la simulation
+start
