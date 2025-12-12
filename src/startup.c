@@ -24,8 +24,8 @@ extern uint32_t _estack;
 
 __attribute__((section(".isr_vector")))
 void (* const g_pfnVectors[])(void) = {
-    (void (*)(void))(&_estack),  // MSP initial
-    Reset_Handler,               // Reset Handler
+    (void (*)(void))(&_estack),  
+    Reset_Handler,               
     NMI_Handler,
     HardFault_Handler,
     MemManage_Handler,

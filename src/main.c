@@ -1,31 +1,73 @@
-#include <stdio.h>
-#include "uart/inc/uart.h"
+/* main.c - compatible avec ton spi.c et led/inc/led.h */
+
+#include <stdint.h>
+#include "spi/inc/spi.h"
 #include "led/inc/led.h"
 
-static void uart_send_string(const char *str) {
-    while (*str) {
-        uart_send(*str++);
-    }
-}
-// Fonction de délai basique (busy-wait)
-static void delay_ms(volatile unsigned int ms)
+/* Mask combiné pour toutes les LEDs */
+#define ALL_LEDS (LED_ORANGE | LED_RED | LED_GREEN | LED_BLUE)
+
+/* Approx delay */
+static void delay_approx(volatile unsigned int loops)
 {
-    for (unsigned int i = 0; i < ms; i++) {
-        for (volatile unsigned int j = 0; j < 4000; j++) {
-        }
+    volatile unsigned int i;
+    for (i = 0; i < loops; ++i) {
+        __asm__("nop");
     }
 }
+
 
 int main(void)
 {
+    int16_t x_raw = 0, y_raw = 0;
+    uint8_t id;
 
-    uart_init();
+    /* Initialisations */
     led_init();
-    while (1) {
-        //uart_send_string("Hello\n");
-        uart_send('H');
-        uart_send('\n'); 
-        led_toggle();
-        delay_ms(1000); // Délai de 1 seconde
+    spi_1_gpio_init();
+    spi_1_init();
+    spi_LIS3DSH_init();
+
+    /* Vérif WHO_AM_I */
+
+    led_off(ALL_LEDS);
+    led_on(LED_GREEN);
+    delay_approx(250000);
+    led_off(LED_GREEN);
+
+    /* Hystérésis */
+    static uint8_t red_on = 0;
+    static uint8_t green_on = 0;
+    static uint8_t orange_on = 0;
+    static uint8_t blue_on = 0;
+
+    while (1)
+    {
+        /* Lire X et Y */
+        uint8_t xl = spi_LIS3DSH_readreg(0x28);
+        uint8_t xh = spi_LIS3DSH_readreg(0x29);
+        x_raw = (int16_t)((xh << 8) | xl);
+
+        uint8_t yl = spi_LIS3DSH_readreg(0x2A);
+        uint8_t yh = spi_LIS3DSH_readreg(0x2B);
+        y_raw = (int16_t)((yh << 8) | yl);
+
+        /* Axe Y */
+        if (!orange_on && y_raw > 1000) { led_on(LED_ORANGE); orange_on = 1; }
+        else if (orange_on && y_raw < 800) { led_off(LED_ORANGE); orange_on = 0; }
+
+        if (!blue_on && y_raw < -1000) { led_on(LED_BLUE); blue_on = 1; }
+        else if (blue_on && y_raw > -800) { led_off(LED_BLUE); blue_on = 0; }
+
+        /* Axe X */
+        if (!red_on && x_raw > 1000) { led_on(LED_RED); red_on = 1; }
+        else if (red_on && x_raw < 800) { led_off(LED_RED); red_on = 0; }
+
+        if (!green_on && x_raw < -1000) { led_on(LED_GREEN); green_on = 1; }
+        else if (green_on && x_raw > -800) { led_off(LED_GREEN); green_on = 0; }
+
+        delay_approx(200000);
     }
+
+    return 0;
 }

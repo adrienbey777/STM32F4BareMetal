@@ -1,4 +1,3 @@
-#include <stdint.h>
 #include "../inc/led.h"
 
 #define RCC_AHB1ENR (*(volatile uint32_t*)0x40023830)
@@ -6,10 +5,6 @@
 #define GPIOD_MODER (*(volatile uint32_t*)0x40020C00)
 #define GPIOD_ODR (*(volatile uint32_t*)0x40020C14)
 
-#define LED_GREEN 12
-#define LED_ORANGE 13
-#define LED_RED 14
-#define LED_BLUE 15
 
 // Initialisation LED sur PA5
 void led_init(void) {
@@ -32,4 +27,14 @@ void led_toggle(void) {
                  (1 << LED_ORANGE) |
                  (1 << LED_RED) |
                  (1 << LED_BLUE);
+}
+
+// Allumer une LED spécifique
+void led_on(uint8_t led) {
+    GPIOD_ODR |= (1 << led);
+}
+
+// Éteindre une LED spécifique
+void led_off(uint8_t led) {
+    GPIOD_ODR &= ~(1 << led);
 }

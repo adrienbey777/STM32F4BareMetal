@@ -11,11 +11,12 @@ CFLAGS = -mcpu=cortex-m4 -mthumb -O2 -nostartfiles -ffreestanding \
 LDFLAGS = -T linker/stm32f4.ld
 
 # Sources
-SRC = Src/startup.c \
-      Src/main.c \
-      Src/syscalls.c \
+SRC = src/startup.c \
+      src/main.c \
+      src/syscalls.c \
       drivers/uart/src/uart.c \
       drivers/led/src/led.c \
+      drivers/spi/src/spi.c \
       cmsis-device-f4/Source/Templates/system_stm32f4xx.c
 
 # Build directory
@@ -27,7 +28,7 @@ OBJ = $(patsubst %.c,$(BUILD_DIR)/%.o,$(notdir $(SRC)))
 # ELF
 ELF = $(BUILD_DIR)/firmware.elf
 
-# Créer le dossier build si nécessaire
+# Build directory
 $(shell mkdir -p $(BUILD_DIR))
 
 # Targets
