@@ -6,13 +6,13 @@ The accelerometer data is read directly from the sensor registers, and LEDs are 
 
 The goal of this project is to gain hands-on experience with:
 
-Low-level SPI communication
+- Low-level SPI communication
 
-Bare-metal embedded programming
+- Bare-metal embedded programming
 
-MEMS sensor configuration and data acquisition
+- MEMS sensor configuration and data acquisition
 
-GPIO control based on sensor inputs
+- GPIO control based on sensor inputs
 
 ## Hardware
 
