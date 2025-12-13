@@ -58,3 +58,5 @@ X Axis
 Positive X acceleration → Red LED ON
 
 Negative X acceleration → Green LED ON
+
+![Démo](assets/demo.gif)
