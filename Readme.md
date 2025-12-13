@@ -1,5 +1,5 @@
-#Bare-Metal SPI Project – LIS3DSH Accelerometer
-##Overview
+# Bare-Metal SPI Project – LIS3DSH Accelerometer
+## Overview
 
 This project demonstrates a bare-metal SPI interface with the LIS3DSH accelerometer.
 The accelerometer data is read directly from the sensor registers, and LEDs are controlled based on the X and Y axis orientation of the board.
@@ -14,7 +14,7 @@ MEMS sensor configuration and data acquisition
 
 GPIO control based on sensor inputs
 
-##Hardware
+## Hardware
 
 STM32 microcontroller (e.g. STM32F4 Discovery)
 
@@ -34,7 +34,7 @@ GPIO
 
 ARM GCC toolchain
 
-##Project Functionality
+## Project Functionality
 
 SPI peripheral initialization
 
