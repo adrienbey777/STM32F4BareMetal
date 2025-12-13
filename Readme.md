@@ -22,7 +22,7 @@ LIS3DSH accelerometer (SPI interface)
 
 On-board LEDs (Red, Green, Blue, Orange)
 
-##Technologies
+## Technologies
 
 C
 
