@@ -16,9 +16,9 @@ The goal of this project is to gain hands-on experience with:
 
 ## Hardware
 
-STM32 microcontroller (e.g. STM32F4 Discovery)
+STM32F407 Discovery
 
-LIS3DSH accelerometer (SPI interface)
+LIS3DSH accelerometer
 
 On-board LEDs (Red, Green, Blue, Orange)
 
