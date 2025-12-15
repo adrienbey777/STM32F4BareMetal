@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025 BEY
+ * Tous droits réservés.
+ */
 #include <stdint.h>
 #include "../inc/spi.h"
 

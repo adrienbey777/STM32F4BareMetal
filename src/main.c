@@ -1,4 +1,7 @@
-/* main.c - compatible avec ton spi.c et led/inc/led.h */
+/*
+ * Copyright (c) 2025 BEY
+ * Tous droits réservés.
+ */
 
 #include <stdint.h>
 #include "spi/inc/spi.h"
