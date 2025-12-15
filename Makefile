@@ -2,7 +2,7 @@
 CC = arm-none-eabi-gcc
 
 # Flags
-CFLAGS = -mcpu=cortex-m4 -mthumb -O2 -nostartfiles -ffreestanding \
+CFLAGS = -mcpu=cortex-m4 -mthumb -O0 -g -nostartfiles -ffreestanding \
          -Icmsis-device-f4/Include \
          -Icmsis-device-f4/core/Include \
          -IDrivers \

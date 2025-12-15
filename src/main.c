@@ -46,6 +46,7 @@ int main(void)
         /* Lire X et Y */
         uint8_t xl = spi_LIS3DSH_readreg(0x28);
         uint8_t xh = spi_LIS3DSH_readreg(0x29);
+        // Avec la configuration ±2g, les valeurs observées sont autour de ±16000
         x_raw = (int16_t)((xh << 8) | xl);
 
         uint8_t yl = spi_LIS3DSH_readreg(0x2A);
