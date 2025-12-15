@@ -97,7 +97,7 @@ void spi_LIS3DSH_init(void) {
     spi_LIS3DSH_writereg(LIS3DSH_CTRL_REG5, 0x00); // ±2g
 }
 
-// --- Lire les 3 axes ---
+// Lire les 3 axes 
 void spi_LIS3DSH_readxyz(int16_t *x, int16_t *y, int16_t *z) {
     uint8_t xl, xh, yl, yh, zl, zh;
 
