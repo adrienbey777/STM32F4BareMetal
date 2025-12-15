@@ -1,7 +1,7 @@
 # Bare-Metal SPI Project – LIS3DSH Accelerometer
 ## Overview
 
-This project demonstrates a bare-metal SPI interface with the LIS3DSH accelerometer.
+This project demonstrates a bare-metal SPI interface with the LIS3DSH accelerometer, developed and debugged using the VS Code environment.
 The accelerometer data is read directly from the sensor registers, and LEDs are controlled based on the X and Y axis orientation of the board.
 
 The goal of this project is to gain hands-on experience with:
@@ -61,6 +61,6 @@ Negative X acceleration → Green LED ON
 
 ## Debugging
 
-To make development and troubleshooting easier, this project supports real-time debugging using GDB through OpenOCD together with VS Code and the Cortex-Debug extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal SPI code more reliable and efficient.
+To make development and troubleshooting easier, this project supports real-time debugging using GDB through OpenOCD and the Cortex-Debug extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal SPI code more reliable and efficient.
 
 ![Démo](assets/demo.gif)
