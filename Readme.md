@@ -61,7 +61,6 @@ Negative X acceleration → Green LED ON
 
 ## Debugging
 
-To make development and troubleshooting easier, this project supports real-time debugging using OpenOCD together with VS Code and the Cortex-Debug extension.
-This addition provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal SPI code more reliable and efficient. 
+To make development and troubleshooting easier, this project supports real-time debugging using GDB through OpenOCD together with VS Code and the Cortex-Debug extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal SPI code more reliable and efficient.
 
 ![Démo](assets/demo.gif)
