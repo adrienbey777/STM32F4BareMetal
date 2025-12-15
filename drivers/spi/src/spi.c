@@ -93,22 +93,23 @@ void spi_LIS3DSH_init(void) {
     if (id != 0x3F) {
         return;
     }
-    spi_LIS3DSH_writereg(LIS3DSH_CTRL_REG4, 0x67); // 100Hz, XYZ enable
+    spi_LIS3DSH_writereg(LIS3DSH_CTRL_REG4, 0xE7); // 100Hz, XYZ enable, BDU=1
     spi_LIS3DSH_writereg(LIS3DSH_CTRL_REG5, 0x00); // ±2g
 }
 
-// --- Lire les 3 axes ---
+// Lire les 3 axes 
 void spi_LIS3DSH_readxyz(int16_t *x, int16_t *y, int16_t *z) {
     uint8_t xl, xh, yl, yh, zl, zh;
 
     LIS3DSH_CS_LOW();
-    spi_1_transfer(0xC0 | LIS3DSH_OUT_X_L); // Read + auto-increment
-    xl = spi_1_transfer(0);
-    xh = spi_1_transfer(0);
-    yl = spi_1_transfer(0);
-    yh = spi_1_transfer(0);
-    zl = spi_1_transfer(0);
-    zh = spi_1_transfer(0);
+    spi_1_transfer(0x80 | LIS3DSH_OUT_X_L);
+
+    xl = spi_1_transfer(0x00);
+    xh = spi_1_transfer(0x00);
+    yl = spi_1_transfer(0x00);
+    yh = spi_1_transfer(0x00);
+    zl = spi_1_transfer(0x00);
+    zh = spi_1_transfer(0x00);
     LIS3DSH_CS_HIGH();
 
     *x = (int16_t)((xh << 8) | xl);

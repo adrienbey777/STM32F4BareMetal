@@ -22,9 +22,6 @@ static void delay_approx(volatile unsigned int loops)
 
 int main(void)
 {
-    int16_t x_raw = 0, y_raw = 0;
-    uint8_t id;
-
     /* Initialisations */
     led_init();
     spi_1_gpio_init();
@@ -44,17 +41,11 @@ int main(void)
     static uint8_t orange_on = 0;
     static uint8_t blue_on = 0;
 
+    static int16_t x_raw, y_raw, z_raw;
+
     while (1)
     {
-        /* Lire X et Y */
-        uint8_t xl = spi_LIS3DSH_readreg(0x28);
-        uint8_t xh = spi_LIS3DSH_readreg(0x29);
-        // Avec la configuration ±2g, les valeurs observées sont autour de ±16000
-        x_raw = (int16_t)((xh << 8) | xl);
-
-        uint8_t yl = spi_LIS3DSH_readreg(0x2A);
-        uint8_t yh = spi_LIS3DSH_readreg(0x2B);
-        y_raw = (int16_t)((yh << 8) | yl);
+        spi_LIS3DSH_readxyz(&x_raw, &y_raw, &z_raw);
 
         /* Axe Y */
         if (!orange_on && y_raw > 1000) { led_on(LED_ORANGE); orange_on = 1; }
