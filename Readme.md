@@ -1,4 +1,4 @@
-<details>
+<details open>
 <summary># Bare-Metal SPI Project – LIS3DSH Accelerometer</summary>
 
 ## Overview
