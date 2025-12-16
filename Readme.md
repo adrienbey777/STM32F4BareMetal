@@ -1,4 +1,6 @@
-# Bare-Metal SPI Project – LIS3DSH Accelerometer
+<details
+<summary># Bare-Metal SPI Project – LIS3DSH Accelerometer</summary>
+
 ## Overview
 
 This project demonstrates a bare-metal SPI interface with the LIS3DSH accelerometer, developed and debugged using the VS Code environment.
