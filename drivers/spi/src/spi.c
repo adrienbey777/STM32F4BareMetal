@@ -62,7 +62,7 @@ void spi_1_init(void) {
 }
 
 //  SPI transfer 
-uint8_t spi_1_transfer(uint8_t data) {
+static uint8_t spi_1_transfer(uint8_t data) {
     while (!(SPI1_SR & (1 << 1))); // Wait TXE
     SPI1_DR = data;
     while (!(SPI1_SR & (1 << 0))); // Wait RXNE
@@ -70,7 +70,7 @@ uint8_t spi_1_transfer(uint8_t data) {
 }
 
 // LIS3DSH write
-void spi_LIS3DSH_writereg(uint8_t reg, uint8_t data) {
+static uint8_t spi_LIS3DSH_writereg(uint8_t reg, uint8_t data) {
     LIS3DSH_CS_LOW();
     spi_1_transfer(reg & 0x3F); // write
     spi_1_transfer(data);
@@ -78,7 +78,7 @@ void spi_LIS3DSH_writereg(uint8_t reg, uint8_t data) {
 }
 
 // LIS3DSH read 
-uint8_t spi_LIS3DSH_readreg(uint8_t reg) {
+static uint8_t spi_LIS3DSH_readreg(uint8_t reg) {
     uint8_t val;
     LIS3DSH_CS_LOW();
     spi_1_transfer(0x80 | reg); // read bit7=1
