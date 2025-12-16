@@ -2,32 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "STM32F407 OpenOCD",
-      "type": "cortex-debug", // Extension VS Code
+      "name": "STM32F407 Flash + Debug",
+      "type": "cortex-debug",
       "request": "launch",
-
       "servertype": "openocd",
-
       "cwd": "${workspaceFolder}",
       "executable": "${workspaceFolder}/build/firmware.elf",
-
       "configFiles": [
         "interface/stlink.cfg",
         "target/stm32f4x.cfg"
       ],
-
       "searchDir": [
-        "${workspaceFolder}/openocd/scripts"  
+        "${workspaceFolder}/openocd/scripts"
       ],
-
-      "runToEntryPoint": "main",  // Arrêter automatiquement à main() après load
-
-      "svdFile": "${workspaceFolder}/STM32F407.svd", //register view
-
       "openOCDLaunchCommands": [
-        "transport select swd", //Serial Wire Debug
-        "adapter speed 4000"  //vitesse de communication avec la cible en kHz
-      ]
+        "transport select swd",
+        "adapter speed 4000"
+      ],
+      "preLaunchCommands": [
+        "flash write_image erase ${workspaceFolder}/build/firmware.elf 0x08000000",
+      ],
     }
   ]
 }
