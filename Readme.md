@@ -102,6 +102,7 @@ Launch the simulation with the STM32F4BareMetal.resc with renode installed.
 Simulate button press and release:
 
 sysbus.gpioPortA.UserButton Press   # simulates pressing PA0
+
 sysbus.gpioPortA.UserButton Release # simulates releasing PA0
 
 </details>
