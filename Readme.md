@@ -66,6 +66,7 @@ Negative X acceleration → Green LED ON
 To make development and troubleshooting easier, this project supports real-time debugging using GDB through OpenOCD and the Cortex-Debug extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal SPI code more reliable and efficient.
 
 ![Démo](assets/demo.gif)
+</details>
 
 <details >
 <summary>Bare-Metal UART Project –  Button Handling</summary>
@@ -100,3 +101,5 @@ Simulate button press and release:
 
 sysbus.gpioPortA.UserButton Press   # simulates pressing PA0
 sysbus.gpioPortA.UserButton Release # simulates releasing PA0
+
+</details>
