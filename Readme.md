@@ -70,6 +70,8 @@ To make development and troubleshooting easier, this project supports real-time 
 
 <details >
 <summary>Bare-Metal UART Project –  Button Handling</summary>
+  
+## Overview
 
 This part of the project demonstrates bare-metal handling of a user button on the STM32F407 Discovery board, with software debouncing and feedback via LEDs and UART. It has been tested both on hardware and in simulation using Renode, allowing safe and repeatable verification without physical hardware.
 
