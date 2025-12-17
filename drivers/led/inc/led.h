@@ -8,7 +8,7 @@
 #define LED_BLUE 15
 
 void led_init(void);
-void led_toggle(void);
+void led_toggle(uint8_t led);
 void led_on(uint8_t led);
 void led_off(uint8_t led);
 #endif

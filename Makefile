@@ -17,6 +17,7 @@ SRC = src/startup.c \
       drivers/uart/src/uart.c \
       drivers/led/src/led.c \
       drivers/spi/src/spi.c \
+      drivers/button/src/button.c \
       cmsis-device-f4/Source/Templates/system_stm32f4xx.c
 
 # Build directory

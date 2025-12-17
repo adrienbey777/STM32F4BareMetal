@@ -32,3 +32,8 @@ void uart_send(char c) {
     USART2->DR = (uint8_t)c;
 }
 
+void uart_send_string(const char *str) {
+    while (*str) {
+        uart_send(*str++);
+    }
+}

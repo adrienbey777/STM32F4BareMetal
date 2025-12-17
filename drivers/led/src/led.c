@@ -18,20 +18,20 @@ void led_init(void) {
                       (1 << (LED_BLUE*2)));
 }
 
-// Toggle toutes les LEDs
-void led_toggle(void) {
-    GPIOD->ODR ^= (1 << LED_GREEN) |
-                  (1 << LED_ORANGE) |
-                  (1 << LED_RED) |
-                  (1 << LED_BLUE);
+// Toggle une LED spécifique
+void led_toggle(uint8_t led)
+{
+    GPIOD->ODR ^= (1 << led);
 }
 
 // Allumer une LED spécifique
-void led_on(uint8_t led) {
+void led_on(uint8_t led)
+{
     GPIOD->ODR |= (1 << led);
 }
 
 // Éteindre une LED spécifique
-void led_off(uint8_t led) {
+void led_off(uint8_t led)
+{
     GPIOD->ODR &= ~(1 << led);
 }
