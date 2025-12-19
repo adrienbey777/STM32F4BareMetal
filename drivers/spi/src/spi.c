@@ -3,7 +3,7 @@
  * Tous droits réservés.
  */
 #include <stdint.h>
-#include "../inc/spi.h"
+#include "spi.h"
 #include "stm32f4xx.h"  // CMSIS pour STM32F4
 
 // LIS3DSH constants

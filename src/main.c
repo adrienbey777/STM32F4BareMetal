@@ -4,10 +4,10 @@
  */
 
 #include <stdint.h>
-#include "spi/inc/spi.h"
-#include "led/inc/led.h"
-#include "uart/inc/uart.h"
-#include "button/inc/button.h"
+#include "spi.h"
+#include "led.h"
+#include "uart.h"
+#include "button.h"
 
 #define USE_MAIN 2
 

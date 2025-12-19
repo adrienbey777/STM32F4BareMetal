@@ -1,5 +1,5 @@
 #include "stm32f4xx.h"  // CMSIS pour STM32F4
-#include "../inc/led.h"
+#include "led.h"
 
 // Initialisation LEDs sur GPIOD
 void led_init(void) {

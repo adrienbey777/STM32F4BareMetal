@@ -3,9 +3,12 @@ CC = arm-none-eabi-gcc
 
 # Flags
 CFLAGS = -mcpu=cortex-m4 -mthumb -O0 -g -nostartfiles -ffreestanding \
-         -Icmsis-device-f4/Include \
+      -Icmsis-device-f4/Include \
          -Icmsis-device-f4/core/Include \
-         -IDrivers \
+         -Idrivers/uart/inc \
+         -Idrivers/led/inc \
+         -Idrivers/spi/inc \
+         -Idrivers/button/inc \
          -DSTM32F407xx
 
 LDFLAGS = -T linker/stm32f4.ld
