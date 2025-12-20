@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2025 BEY
+ * Tous droits réservés.
+ */
+
+#include "spi.h"
+#include "main_spi.h"
+#include "delay.h"
+#include "led.h"
+
+void main_spi(void)
+{
+    
+    uint8_t lRed_on = 0u;
+    uint8_t lGreen_on = 0u;
+    uint8_t lOrange_on = 0u;
+    uint8_t lBlue_on = 0u;
+
+    int16_t lX_raw, lY_raw, lZ_raw;
+
+    spi_1_gpio_init();
+    spi_1_init();
+    spi_LIS3DSH_init();
+
+    while (1)
+    {
+        spi_LIS3DSH_readxyz(&lX_raw, &lY_raw, &lZ_raw);
+
+        /* Axe Y */
+        if (!lOrange_on && lY_raw > 1000) { led_on(LED_ORANGE); lOrange_on = 1u; }
+        else if (lOrange_on && lY_raw < 800) { led_off(LED_ORANGE); lOrange_on = 0u; }
+
+        if (!lBlue_on && lY_raw < -1000) { led_on(LED_BLUE); lBlue_on = 1u; }
+        else if (lBlue_on && lY_raw > -800) { led_off(LED_BLUE); lBlue_on = 0u; }
+
+        /* Axe X */
+        if (!lRed_on && lX_raw > 1000) { led_on(LED_RED); lRed_on = 1u; }
+        else if (lRed_on && lX_raw < 800) { led_off(LED_RED); lRed_on = 0u; }
+
+        if (!lGreen_on && lX_raw < -1000) { led_on(LED_GREEN); lGreen_on = 1u; }
+        else if (lGreen_on && lX_raw > -800) { led_off(LED_GREEN); lGreen_on = 0u; }
+
+        delay(420000u); // 10ms at 168MHz
+    }
+}

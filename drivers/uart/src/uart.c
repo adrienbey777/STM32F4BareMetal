@@ -3,8 +3,7 @@
  * Copyright (c) 2025 BEY
  * Tous droits réservés.
  */
-#include <stdint.h>
-#include "../inc/uart.h"
+#include "uart.h"
 #include "stm32f4xx.h"  // CMSIS pour STM32F4
 
 void uart_init(void) {
@@ -12,12 +11,16 @@ void uart_init(void) {
     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;  // GPIOA clock enable
     RCC->APB1ENR |= RCC_APB1ENR_USART2EN; // USART2 clock enable
 
-    // 2. Configurer PA2 en Alternate Function AF7 (USART2_TX)
-    GPIOA->MODER &= ~(GPIO_MODER_MODE2_Msk);
-    GPIOA->MODER |=  (GPIO_MODER_MODE2_1);   // Mode AF
-    GPIOA->AFR[0] &= ~(GPIO_AFRL_AFSEL2_Msk);
+    // 2. Configurer PA2, PA3 en Alternate Function AF7 (USART2_TX) (USART2_RX)
+    GPIOA->MODER &= ~GPIO_MODER_MODE2_Msk;
+    GPIOA->MODER |=  GPIO_MODER_MODE2_1;   // Alternate Function
+    GPIOA->AFR[0] &= ~GPIO_AFRL_AFSEL2_Msk;
     GPIOA->AFR[0] |=  (7 << GPIO_AFRL_AFSEL2_Pos); // AF7 USART2
 
+    GPIOA->MODER &= ~GPIO_MODER_MODE3_Msk;
+    GPIOA->MODER |=  GPIO_MODER_MODE3_1;   // Alternate Function
+    GPIOA->AFR[0] &= ~GPIO_AFRL_AFSEL3_Msk;
+    GPIOA->AFR[0] |=  (7 << GPIO_AFRL_AFSEL3_Pos); // AF7 USART2
 
     // 4. Activer USART2, TX et RX
     uint32_t mantissa = 22;

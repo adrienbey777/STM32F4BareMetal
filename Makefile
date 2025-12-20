@@ -1,48 +1,54 @@
 # Toolchain
+
 CC = arm-none-eabi-gcc
 
-# Flags
-CFLAGS = -mcpu=cortex-m4 -mthumb -O0 -g -nostartfiles -ffreestanding \
+CPUFLAGS = -mcpu=cortex-m4 -mthumb
+
+CFLAGS = $(CPUFLAGS) -O0 -g -ffreestanding -nostartfiles \
          -Icmsis-device-f4/Include \
          -Icmsis-device-f4/core/Include \
-         -IDrivers \
+         -Idrivers/uart/inc \
+         -Idrivers/led/inc \
+         -Idrivers/spi/inc \
+         -Idrivers/button/inc \
+         -Iinc \
          -DSTM32F407xx
 
-LDFLAGS = -T linker/stm32f4.ld
+LDFLAGS = $(CPUFLAGS) -T linker/stm32f4.ld
 
-# Sources
-SRC = src/startup.c \
-      src/main.c \
-      src/syscalls.c \
-      drivers/uart/src/uart.c \
-      drivers/led/src/led.c \
-      drivers/spi/src/spi.c \
-      drivers/button/src/button.c \
-      cmsis-device-f4/Source/Templates/system_stm32f4xx.c
 
-# Build directory
+# Sources 
+SRC = \
+src/startup.c \
+src/main.c \
+src/main_spi.c \
+src/main_uart.c \
+src/syscalls.c \
+src/delay.c \
+drivers/uart/src/uart.c \
+drivers/led/src/led.c \
+drivers/spi/src/spi.c \
+drivers/button/src/button.c \
+cmsis-device-f4/Source/Templates/system_stm32f4xx.c
+
+
+# Build
+
 BUILD_DIR = build
+OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)
 
-# Objects (aplatis : tous dans build/)
-OBJ = $(patsubst %.c,$(BUILD_DIR)/%.o,$(notdir $(SRC)))
-
-# ELF
 ELF = $(BUILD_DIR)/firmware.elf
 
-# Build directory
-$(shell mkdir -p $(BUILD_DIR))
+# Rules
 
-# Targets
 all: $(ELF)
 
-# Compile .c -> .o
-$(BUILD_DIR)/%.o:
-	$(CC) $(CFLAGS) -c $(firstword $(filter %$*.c,$(SRC))) -o $@
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Link .o -> .elf
 $(ELF): $(OBJ)
 	$(CC) $(OBJ) $(LDFLAGS) -o $@
 
-# Clean
 clean:
-	rm -rf $(BUILD_DIR)/*
+	rm -rf $(BUILD_DIR)

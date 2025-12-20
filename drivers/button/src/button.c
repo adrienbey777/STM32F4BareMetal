@@ -1,5 +1,5 @@
-#include "../inc/button.h"
-#include "stm32f4xx.h"  // contient les définitions de registre
+#include "button.h"
+#include "stm32f4xx.h"  
 
 void button_init(void)
 {
