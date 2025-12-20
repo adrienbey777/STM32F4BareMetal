@@ -3,7 +3,6 @@
  * Copyright (c) 2025 BEY
  * Tous droits réservés.
  */
-#include <stdint.h>
 #include "uart.h"
 #include "stm32f4xx.h"  // CMSIS pour STM32F4
 
