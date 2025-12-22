@@ -12,6 +12,7 @@ void bsp_spi1_lis3dsh_cs_high(void) {
 
 // GPIO SPI1 
 void bsp_spi1_gpio_init(void) {
+    // Enable clock for GPIOA and GPIOE peripherals
     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOEEN;
 
     // PA5, PA6, PA7 = AF5 (SPI1)
