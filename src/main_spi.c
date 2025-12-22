@@ -3,13 +3,15 @@
  * Tous droits réservés.
  */
 
-#include "spi.h"
 #include "main_spi.h"
 #include "delay.h"
 #include "led.h"
+#include "lis3dsh.h"   
+#include "system_spi.h" 
 
 void main_spi(void)
 {
+    system_spi_init();
     
     uint8_t lRed_on = 0u;
     uint8_t lGreen_on = 0u;
@@ -18,13 +20,9 @@ void main_spi(void)
 
     int16_t lX_raw, lY_raw, lZ_raw;
 
-    spi_1_gpio_init();
-    spi_1_init();
-    spi_LIS3DSH_init();
-
     while (1)
     {
-        spi_LIS3DSH_readxyz(&lX_raw, &lY_raw, &lZ_raw);
+        lis3dsh_readxyz(&lX_raw, &lY_raw, &lZ_raw);
 
         /* Axe Y */
         if (!lOrange_on && lY_raw > 1000) { led_on(LED_ORANGE); lOrange_on = 1u; }
