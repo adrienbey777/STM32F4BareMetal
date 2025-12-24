@@ -1,24 +1,33 @@
-#include "stm32f4xx.h" 
 #include "spi1.h"
+#include "bsp_spi1.h"
 
+
+// Initialisation SPI1
 
 void spi1_init(void)
 {
-    // Horloge SPI1
-    RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
+    // Initialise les GPIO + CS
+    bsp_spi1_gpio_init();
 
-    SPI1->CR1 = 0;
-    SPI1->CR1 |= SPI_CR1_MSTR;               // Master
-    SPI1->CR1 |= SPI_CR1_SSM | SPI_CR1_SSI;  // Software NSS
-    SPI1->CR1 |= SPI_CR1_CPOL | SPI_CR1_CPHA; // Mode 3
-    SPI1->CR1 |= (0x4 << SPI_CR1_BR_Pos);    // fPCLK/32
-    SPI1->CR1 |= SPI_CR1_SPE;                // Enable
+    // Initialise le SPI1 (CR1, Master, mode3…)
+    bsp_spi1_spi_init();
 }
+
+// Transfert 1 octet
 
 uint8_t spi1_transfer(uint8_t data)
 {
-    while (!(SPI1->SR & SPI_SR_TXE));
-    SPI1->DR = data;
-    while (!(SPI1->SR & SPI_SR_RXNE));
-    return SPI1->DR;
+    return bsp_spi1_transfer(data);
+}
+
+// CS control
+
+void spi1_cs_low(void)
+{
+    bsp_spi1_lis3dsh_cs_low();
+}
+
+void spi1_cs_high(void)
+{
+    bsp_spi1_lis3dsh_cs_high();
 }

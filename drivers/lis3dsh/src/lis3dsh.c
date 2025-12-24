@@ -1,6 +1,5 @@
 #include "lis3dsh.h"
 #include "spi1.h"
-#include "bsp_spi1.h"
 
 // Registres lis3dsh
 #define LIS3DSH_WHO_AM_I   0x0F
@@ -10,20 +9,20 @@
 
 static void lis3dsh_writereg(uint8_t reg, uint8_t data)
 {
-    bsp_spi1_lis3dsh_cs_low();
+    spi1_cs_low();
     spi1_transfer(reg & 0x3F);
     spi1_transfer(data);
-    bsp_spi1_lis3dsh_cs_high();
+    spi1_cs_high();
 }
 
 static uint8_t lis3dsh_readreg(uint8_t reg)
 {
     uint8_t lVal;
 
-    bsp_spi1_lis3dsh_cs_low();
+    spi1_cs_low();
     spi1_transfer(0x80 | reg);
     lVal = spi1_transfer(0x00);
-    bsp_spi1_lis3dsh_cs_high();
+    spi1_cs_high();
 
     return lVal;
 }
@@ -42,7 +41,7 @@ void lis3dsh_readxyz(int16_t *x, int16_t *y, int16_t *z)
 {
     uint8_t lXl, lXh, lYl, lYh, lZl, lZh;
 
-    bsp_spi1_lis3dsh_cs_low();
+    spi1_cs_low();
     spi1_transfer(0x80 | LIS3DSH_OUT_X_L);
 
     lXl = spi1_transfer(0x00);
@@ -52,7 +51,7 @@ void lis3dsh_readxyz(int16_t *x, int16_t *y, int16_t *z)
     lZl = spi1_transfer(0x00);
     lZh = spi1_transfer(0x00);
 
-    bsp_spi1_lis3dsh_cs_high();
+    spi1_cs_high();
 
     *x = (int16_t)((lXh << 8) | lXl);
     *y = (int16_t)((lYh << 8) | lYl);
