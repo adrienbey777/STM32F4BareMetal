@@ -13,7 +13,7 @@
 void main_uart(void)
 {
     button_init();
-    uart_init();
+    uart_init(115200u);
 
     ButtonState lLast_raw = BUTTON_RESET;
     ButtonState lStable   = BUTTON_RESET;
