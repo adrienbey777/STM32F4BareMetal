@@ -39,10 +39,9 @@ In main.c, you have to set #define USE_MAIN: 1 for the SPI project, 2 for the UA
   - X axis: positive → Red LED, negative → Green LED
 - A hysteresis logic is applied to prevent rapid LED blinking.
 
----
 ![Démo](assets/demo.gif)
 
-
+---
 
 ### 2. UART – User Button (`main_uart.c`)
 This example demonstrates how to handle the user button input and send feedback via UART while providing visual feedback using the LEDs.
