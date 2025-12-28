@@ -1,8 +1,7 @@
 <details open>
-# STM32F4 Bare-Metal
-
 ---
-
+## STM32F4 Bare-Metal
+  
 ## Table of Contents
 1. [Overview](#overview)
 2. [Hardware](#hardware)
