@@ -1,5 +1,5 @@
 <details open>
----
+
 ## STM32F4 Bare-Metal
   
 ## Table of Contents
