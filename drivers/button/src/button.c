@@ -1,20 +1,57 @@
 #include "button.h"
-#include "stm32f4xx.h"  
+#include "bsp_button.h"
+
+#define DEBOUNCE_CNT_MAX 5
+
+static BspButtonState last_raw;
+static BspButtonState stable;
+static uint8_t     cnt;
 
 void button_init(void)
 {
-    // Activer l’horloge GPIOA
-    RCC->AHB1ENR |= (1 << BUTTON_RCC);
+    /* Initialisation hardware via BSP */
+    bsp_button_init();
 
-    // Configurer PA0 comme entrée
-    BUTTON_PORT->MODER &= ~(0x3 << (BUTTON_PIN * 2));  // 00 = input
-    BUTTON_PORT->PUPDR &= ~(0x3 << (BUTTON_PIN * 2));  // pas de pull-up/pull-down
+    last_raw = BSP_BUTTON_RESET;
+    stable   = BSP_BUTTON_RESET;
+    cnt      = 0;
 }
 
-ButtonState button_read(void)
+ButtonEvent button_update(void)
 {
-    if (BUTTON_PORT->IDR & (1 << BUTTON_PIN))
-        return BUTTON_SET;
+    BspButtonState raw = bsp_button_getstate();
+
+    if (raw == last_raw)
+    {
+        if (cnt < DEBOUNCE_CNT_MAX)
+        {
+            cnt++;
+        }
+    }
     else
-        return BUTTON_RESET;
+    {
+        cnt = 0;
+    }
+
+    /* Mémorisation de l'état brut pour la prochaine itération */
+
+    last_raw = raw;
+
+    /*  Si l'état brut est resté identique DEBOUNCE_CNT_MAX */
+
+    if (cnt >= DEBOUNCE_CNT_MAX)
+    {
+        if ((raw == BSP_BUTTON_SET) && (stable == BSP_BUTTON_RESET))
+        {
+            stable = BSP_BUTTON_SET;
+            return BUTTON_EVENT_SET;
+        }
+        else if ((raw == BSP_BUTTON_RESET) && (stable == BSP_BUTTON_SET))
+        {
+            stable = BSP_BUTTON_RESET;
+            return BUTTON_EVENT_RESET;
+        }
+    }
+
+    return BUTTON_EVENT_NONE;
 }

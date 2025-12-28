@@ -1,21 +1,23 @@
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef BUTTON_DRIVER_H
+#define BUTTON_DRIVER_H
 
 #include <stdint.h>
 
-#define BUTTON_PIN   0       // PA0
-#define BUTTON_PORT  GPIOA   // port A
-#define BUTTON_RCC   0       // RCC_AHB1ENR bit pour GPIOA
+/* Événements générés par le bouton :
+ *         - BUTTON_EVENT_NONE  : aucun changement
+ *         - BUTTON_EVENT_SET   : appui détecté
+ *         - BUTTON_EVENT_RESET : relâchement détecté
+ */
+typedef enum
+{
+    BUTTON_EVENT_NONE,
+    BUTTON_EVENT_SET,
+    BUTTON_EVENT_RESET
+} ButtonEvent;
 
-typedef enum {
-    BUTTON_RESET = 0,
-    BUTTON_SET
-} ButtonState;
 
-// Initialise le GPIO du bouton
 void button_init(void);
 
-// Lit l’état du bouton (0 ou 1)
-ButtonState button_read(void);
+ButtonEvent button_update(void);
 
-#endif
+#endif /* BUTTON_DRIVER_H */

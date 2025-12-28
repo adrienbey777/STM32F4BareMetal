@@ -1,14 +1,21 @@
 #ifndef LED_H
 #define LED_H
+
 #include <stdint.h>
 
-#define LED_GREEN 12
-#define LED_ORANGE 13
-#define LED_RED 14
-#define LED_BLUE 15
+/* LEDs logiques */
+typedef enum
+{
+    LED_GREEN,
+    LED_ORANGE,
+    LED_RED,
+    LED_BLUE
+} led_t;
 
+/* API DRIVER */
 void led_init(void);
-void led_toggle(uint8_t led);
-void led_on(uint8_t led);
-void led_off(uint8_t led);
+void led_on(led_t led);
+void led_off(led_t led);
+void led_toggle(led_t led);
+
 #endif
