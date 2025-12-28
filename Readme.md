@@ -1,6 +1,43 @@
 <details open>
 <summary>Bare-Metal SPI Project – LIS3DSH Accelerometer</summary>
+# STM32F4 Bare-Metal
 
+---
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Hardware](#hardware)
+3. [Technologies](#technologies)
+4. [Build and Flash](#build-and-flash)
+5. [Project Examples](#project-examples)
+
+---
+
+## Overview
+This repository contains bare-metal projects for the **STM32F407 Discovery board**.  
+It demonstrates low-level peripheral programming (SPI, UART, GPIO) without an RTOS, providing a foundation to learn embedded systems development.
+
+The projects are divided into independent examples, each with its own `main` file:
+- `main_spi.c` → SPI project (LIS3DSH accelerometer + LED control)
+- `main_uart.c` → UART project (User button + LED feedback)
+
+Common drivers for GPIO, SPI, and UART are shared across all projects.
+
+---
+
+## Hardware
+- STM32F407 Discovery board
+- LIS3DSH accelerometer (for SPI example)
+- On-board LEDs (Red, Green, Blue, Orange)
+- User button (PA0)
+
+## Technologies
+- C language
+- Bare-metal programming
+- GPIO, SPI, and UART peripherals
+- ARM GCC toolchain
+- OpenOCD for flashing/debugging
+- Renode for simulation
 ## Overview
 
 This project demonstrates a bare-metal SPI interface with the LIS3DSH accelerometer, developed and debugged using the VS Code environment.
