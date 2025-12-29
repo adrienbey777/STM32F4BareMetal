@@ -1,6 +1,5 @@
 <details open>
-
-## STM32F4 Bare-Metal
+<summary>STM32F4 Bare-Metal</summary>
   
 ## Table of Contents
 1. [Overview](#overview)
