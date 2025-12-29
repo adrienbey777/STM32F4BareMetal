@@ -41,6 +41,8 @@ In main.c, you have to set #define USE_MAIN: 1 for the SPI project, 2 for the UA
 
 ![Démo](assets/demo.gif)
 
+</details>
+
 <details>
 <summary>2. UART – User Button (`main_uart.c`)</summary>
   
@@ -58,7 +60,4 @@ Simulate button press and release:
 sysbus.gpioPortA.UserButton Press   # simulates pressing PA0
 sysbus.gpioPortA.UserButton Release # simulates releasing PA0
 
----
-
-Both projects share the same **low-level drivers** for GPIO, SPI, and UART, making the code reusable and maintaining a clear project structure.
-
+</details>
