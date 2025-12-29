@@ -10,6 +10,7 @@ CFLAGS = $(CPUFLAGS) -O0 -g -ffreestanding -nostartfiles \
          -Ibsp/spi/inc \
          -Ibsp/uart/inc \
          -Ibsp/button/inc \
+         -Ibsp/led/inc \
          -Idrivers/uart/inc \
          -Idrivers/led/inc \
          -Idrivers/spi1/inc \
@@ -26,6 +27,7 @@ SRC = \
 bsp/spi/src/bsp_spi1.c \
 bsp/uart/src/bsp_uart.c \
 bsp/button/src/bsp_button.c \
+bsp/led/src/bsp_led.c \
 drivers/uart/src/uart.c \
 drivers/led/src/led.c \
 drivers/spi1/src/spi1.c \
