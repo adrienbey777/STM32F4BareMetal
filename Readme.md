@@ -20,9 +20,33 @@ The projects are divided into independent examples, each with its own `main` fil
 
 Common drivers for GPIO, SPI, and UART are shared across all projects
 
-## Debugging and flashing
+## Hardware
 
-To make development and troubleshooting easier, this project supports real-time debugging using GDB through OpenOCD and the Cortex-Debug extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal SPI code more reliable and efficient.
+These projects are designed to run on the **STM32F407 Discovery** board.
+
+**Main components:**
+- **STM32F407** microcontroller (ARM Cortex-M4)
+- **LIS3DSH accelerometer** (connected via SPI, used in the SPI example)
+- **On-board LEDs**:
+  - Green (PD12)
+  - Orange (PD13)
+  - Red (PD14)
+  - Blue (PD15)
+- **User button** (PA0, used in the UART example)
+- 
+## Debugging and Flashing
+
+To make development and troubleshooting easier, this project supports real-time debugging using **GDB** through **OpenOCD** and the **Cortex-Debug** extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal code more reliable and efficient.
+
+- Build the project:
+make MAIN=main_spi or MAIN=main_uart
+This will generate a firmware.elf file if the build succeeds.
+
+Clean build artifacts:
+make clean
+
+Debugging and flashing using launch.json:
+The launch.json configuration (for VSCode) is preconfigured to work with OpenOCD and the STM32F407 Discovery board.
 
 ## Project Examples
 <details>
@@ -50,7 +74,7 @@ This example demonstrates how to handle the user button input and send feedback 
 
 **How it works:**
 - The user button is configured as an input and managed with software debounce to avoid false triggers.
-- The UART is initialized to allow sending messages when the button is pressed.
+- The UART is initialized to allow sending messages when the button is pressed and released.
 - Reading the button state triggers the  Green LED to provide immediate visual feedback.
 - The program runs in an infinite loop to continuously monitor the button and update the LED in real time.
 
