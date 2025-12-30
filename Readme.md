@@ -23,8 +23,6 @@ Common drivers for GPIO, SPI, and UART are shared across all projects
 
 ## Hardware
 
-These projects are designed to run on the **STM32F407 Discovery** board.
-
 **Main components:**
 - **STM32F407** microcontroller (ARM Cortex-M4)
 - **LIS3DSH accelerometer** (connected via SPI, used in the SPI example)
