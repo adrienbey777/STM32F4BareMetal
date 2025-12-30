@@ -1,0 +1,25 @@
+name: STM32 Bare-Metal CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Compile Project
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up ARM GCC toolchain
+      uses: ArmMbed/arm-gcc-action@v1
+
+    - name: Clean previous build
+      run: make clean
+
+    - name: Build project
+      run: make 
