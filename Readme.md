@@ -33,7 +33,7 @@ These projects are designed to run on the **STM32F407 Discovery** board.
   - Red (PD14)
   - Blue (PD15)
 - **User button** (PA0, used in the UART example)
-- 
+  
 ## Debugging and Flashing
 
 To make development and troubleshooting easier, this project supports real-time debugging using **GDB** through **OpenOCD** and the **Cortex-Debug** extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal code more reliable and efficient.
@@ -68,8 +68,8 @@ In main.c, you have to set #define USE_MAIN: 1 for the SPI project, 2 for the UA
 </details>
 
 <details>
-<summary>2. UART – User Button (`main_uart.c`)</summary>
-<p></p>
+<summary>2. UART – User Button (`main_uart.c`)</summary>  
+
 This example demonstrates how to handle the user button input and send feedback via UART while providing visual feedback using the LEDs.
 
 **How it works:**
