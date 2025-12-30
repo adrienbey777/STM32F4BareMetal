@@ -3,7 +3,7 @@
 #include "main_uart.h"
 #include "led.h"
 
-#define USE_MAIN 1  // 1 = SPI, 2 = UART
+#define USE_MAIN 3  // 1 = SPI, 2 = UART
 
 int main(void)
 {
