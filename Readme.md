@@ -53,14 +53,14 @@ These projects are designed to run on the **STM32F407 Discovery** board.
 
 To make development and troubleshooting easier, this project supports real-time debugging using **GDB** through **OpenOCD** and the **Cortex-Debug** extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal code more reliable and efficient.
 
-Build the project:
+Build the project:  
 make MAIN=main_spi or MAIN=main_uart.
 This will generate a firmware.elf file if the build succeeds.
 
-Clean build artifacts:
+Clean build artifacts:  
 make clean
 
-Debugging and flashing using launch.json:
+Debugging and flashing using launch.json:  
 The launch.json configuration (for VSCode) is preconfigured to work with OpenOCD and the STM32F407 Discovery board.
 
 ## Project Examples
