@@ -4,7 +4,7 @@
 ## Table of Contents
 1. [Overview](#overview)
 2. [Hardware](#hardware)
-3. [Technologies](#technologies)
+3. [Tools and Environment](#Tools-and-Environment)
 4. [Debugging and flashing](#Debugging-and-flashing)
 5. [Project Examples](#project-examples)
 
@@ -34,7 +34,21 @@ These projects are designed to run on the **STM32F407 Discovery** board.
   - Red (PD14)
   - Blue (PD15)
 - **User button** (PA0, used in the UART example)
-  
+
+**Toolchain and tools:**
+- **ARM GNU Toolchain** for compiling and linking the firmware
+- **Make** for build automation
+- **OpenOCD** for flashing and on-target debugging
+- **GDB** for source-level debugging
+- **Cortex-Debug (VS Code extension)** for an integrated debugging experience
+- **Renode** for hardware simulation and testing without a physical board
+
+**Software environment:**
+- Bare-metal C programming (no RTOS, no HAL)
+- CMSIS device headers for register definitions
+- Custom low-level drivers for GPIO, SPI, and UART
+
+
 ## Debugging and Flashing
 
 To make development and troubleshooting easier, this project supports real-time debugging using **GDB** through **OpenOCD** and the **Cortex-Debug** extension. This setup provides better insight into sensor values, SPI transactions, and LED behavior, making debugging bare-metal code more reliable and efficient.
