@@ -65,15 +65,16 @@ The launch.json configuration (for VSCode) is preconfigured to work with OpenOCD
 <details>
 <summary>1. SPI – LIS3DSH Accelerometer (`main_spi.c`)</summary>
 <p></p>  
-This example demonstrates how to use the SPI bus to communicate with the LIS3DSH accelerometer and control the LEDs on the STM32F4 board based on the sensor's orientation.    
+This example demonstrates how to use the SPI bus to communicate with the LIS3DSH accelerometer and control the LEDs on the STM32F4 board based on the sensor's orientation.
+  
 **How it works:**  
-- The SPI peripheral is initialized to communicate with the LIS3DSH.  
+- The SPI peripheral is initialized to communicate with the LIS3DSH.    
 - The accelerometer is configured in normal mode with X and Y axes enabled.  
-- The board periodically reads raw acceleration values from the sensor.  
-- LEDs are turned on according to the measured orientation:
-  - Y axis: positive → Orange LED, negative → Blue LED  
-  - X axis: positive → Red LED, negative → Green LED  
-- A hysteresis logic is applied to prevent rapid LED blinking.  
+- The board periodically reads raw acceleration values from the sensor.   
+- LEDs are turned on according to the measured orientation:  
+  - Y axis: positive → Orange LED, negative → Blue LED    
+  - X axis: positive → Red LED, negative → Green LED   
+- A hysteresis logic is applied to prevent rapid LED blinking.   
 
 ![Démo](assets/demo.gif)
 
