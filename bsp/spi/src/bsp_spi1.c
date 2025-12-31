@@ -17,7 +17,7 @@ static void bsp_spi1_gpio_enable_clock(void)
 
 static void bsp_spi1_init_pins(void)
 {
-    // PA5, PA6, PA7 = AF5
+    // PA5, PA6, PA7 = AF5, SPI1 SCLK, MISO, MOSI
     GPIOA->MODER &= ~(
         GPIO_MODER_MODE5_Msk |
         GPIO_MODER_MODE6_Msk |
