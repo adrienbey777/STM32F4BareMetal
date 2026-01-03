@@ -7,11 +7,12 @@
 #include "delay.h"
 #include "led.h"
 #include "lis3dsh.h"   
-#include "system_spi.h" 
+#include "spi1.h"
 
 void main_spi(void)
 {
-    system_spi_init();
+    spi1_init();            // bus spi
+    lis3dsh_init();         // capteur
     
     uint8_t lRed_on = 0u;
     uint8_t lGreen_on = 0u;

@@ -39,7 +39,6 @@ src/main_spi.c \
 src/main_uart.c \
 src/syscalls.c \
 src/delay.c \
-src/system_spi.c \
 cmsis-device-f4/Source/Templates/system_stm32f4xx.c
 
 
