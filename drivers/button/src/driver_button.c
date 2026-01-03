@@ -1,4 +1,4 @@
-#include "driver_gpio.h"
+#include "driver_button.h"
 
 void driver_button_enable_clock(GPIO_TypeDef *port, uint32_t en_mask) {
     if (port == GPIOA) RCC->AHB1ENR |= en_mask;
