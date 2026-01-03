@@ -1,4 +1,5 @@
 #include "bsp_uart.h"
+#include "driver_uart.h"
 #include "stm32f4xx.h"
 
 static void bsp_uart_enable_clock(void)

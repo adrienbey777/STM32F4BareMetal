@@ -1,5 +1,5 @@
-#ifndef UART_DRIVER_H
-#define UART_DRIVER_H
+#ifndef DRIVER_UART_H
+#define DRIVER_UART_H
 
 #include "stm32f4xx.h"
 #include <stdint.h>
