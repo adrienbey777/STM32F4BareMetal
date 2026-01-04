@@ -24,7 +24,7 @@ static void bsp_uart_init_pins(void)
 }
 
 static void bsp_uart_configure(uint32_t baudrate) {
-    // Exemple 16 MHz / 115200
+    // APB1 = 42 MHz  / Baud = 115200
     uint32_t mantissa = 22;
     uint32_t fraction = 13;
     driver_uart_configure(USART2, mantissa, fraction);

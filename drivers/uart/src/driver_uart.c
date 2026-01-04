@@ -5,7 +5,7 @@ void driver_uart_enable_clock(USART_TypeDef *uart) {
 }
 
 void driver_uart_configure(USART_TypeDef *uart, uint32_t mantissa, uint32_t fraction) {
-    uart->BRR = (mantissa << 4) | (fraction & 0xF);
+    uart->BRR = (mantissa << 4) | (fraction & 0xF);    
     uart->CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE;
 }
 
