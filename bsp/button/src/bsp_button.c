@@ -12,11 +12,11 @@ void bsp_button_init(void) {
     driver_button_enable_clock(BSP_BUTTON_PORT, BSP_BUTTON_CLK);
 
     // Configurer PA0 en entrée
-    driver_button_set_mode(BSP_BUTTON_PORT, BSP_BUTTON_PIN, 0); // 0 = input
+    driver_button_set_mode(BSP_BUTTON_PORT, BSP_BUTTON_PIN, 0u); // 0 = input
 }
 
 BspButtonState bsp_button_getstate(void) {
-    if (driver_button_read_pin(BSP_BUTTON_PORT, BSP_BUTTON_PIN) != 0) {
+    if (driver_button_read_pin(BSP_BUTTON_PORT, BSP_BUTTON_PIN) != 0u) {
         return BSP_BUTTON_SET;
     } else {
         return BSP_BUTTON_RESET;

@@ -83,9 +83,9 @@ void bsp_spi1_spi_init(void)
 
     uint32_t cr1 = SPI_CR1_MSTR      |  // Master
                    SPI_CR1_SSM       |  // Software NSS
-                   SPI_CR1_SSI       |  
+                   SPI_CR1_SSI       |  // NSS high
                    SPI_CR1_CPOL      |  // Mode 3
-                   SPI_CR1_CPHA      |
+                   SPI_CR1_CPHA      |  // Mode 3
                    (0x4 << SPI_CR1_BR_Pos); // fPCLK/32
     driver_spi_configure(SPI1, cr1);
 }

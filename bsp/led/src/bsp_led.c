@@ -9,16 +9,15 @@ static const uint8_t bsp_led_pin[] = {12, 13, 14, 15};
 void bsp_led_init(void) {
     driver_led_enable_clock(BSP_LED_PORT, BSP_LED_PORT_CLK);
     for(int i=0; i<4; i++) {
-        driver_led_set_mode(BSP_LED_PORT, bsp_led_pin[i], 1); // 1=output
-    }
+        driver_led_set_mode(BSP_LED_PORT, bsp_led_pin[i], 1u); 
 }
 
 void bsp_led_on(uint8_t led) {
-    driver_led_write_pin(BSP_LED_PORT, bsp_led_pin[led], 1);
+    driver_led_write_pin(BSP_LED_PORT, bsp_led_pin[led], 1u);
 }
 
 void bsp_led_off(uint8_t led) {
-    driver_led_write_pin(BSP_LED_PORT, bsp_led_pin[led], 0);
+    driver_led_write_pin(BSP_LED_PORT, bsp_led_pin[led], 0u);
 }
 
 void bsp_led_toggle(uint8_t led) {
