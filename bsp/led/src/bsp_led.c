@@ -10,6 +10,7 @@ void bsp_led_init(void) {
     driver_led_enable_clock(BSP_LED_PORT, BSP_LED_PORT_CLK);
     for(int i=0; i<4; i++) {
         driver_led_set_mode(BSP_LED_PORT, bsp_led_pin[i], 1u); 
+    }
 }
 
 void bsp_led_on(uint8_t led) {
