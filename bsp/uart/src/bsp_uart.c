@@ -4,7 +4,8 @@
 
 static void bsp_uart_enable_clock(void)
 {
-    driver_uart_enable_clock(USART2, RCC_AHB1ENR_GPIOAEN, RCC_APB1ENR_USART2EN);
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    driver_uart_enable_clock(USART2);
 }
 
 static void bsp_uart_init_pins(void)

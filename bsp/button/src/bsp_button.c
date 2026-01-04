@@ -8,7 +8,7 @@
 
 void bsp_button_init(void) {
     // Activer horloge GPIO
-    driver_gpio_enable_clock(BSP_BUTTON_PORT);
+     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
 
     // Configurer PA0 en entrée
     driver_gpio_set_mode(BSP_BUTTON_PORT, BSP_BUTTON_PIN, 0u); // 0 = input

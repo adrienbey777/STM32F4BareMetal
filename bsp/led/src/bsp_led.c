@@ -6,7 +6,7 @@ static const uint8_t bsp_led_pin[] = {12, 13, 14, 15};
 #define BSP_LED_PORT GPIOD
 
 void bsp_led_init(void) {
-    driver_gpio_enable_clock(BSP_LED_PORT);
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
     for(int i=0; i<4; i++) {
         driver_gpio_set_mode(BSP_LED_PORT, bsp_led_pin[i], 1u); 
     }

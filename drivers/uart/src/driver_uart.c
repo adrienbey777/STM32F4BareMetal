@@ -1,11 +1,7 @@
 #include "driver_uart.h"
 
-void driver_uart_enable_clock(USART_TypeDef *uart, uint32_t gpio_en, uint32_t uart_en) {
-    RCC->AHB1ENR |= gpio_en;
-    if (uart == USART1 || uart == USART6)
-        RCC->APB2ENR |= uart_en;
-    else
-        RCC->APB1ENR |= uart_en;
+void driver_uart_enable_clock(USART_TypeDef *uart) {
+    if (uart == USART2)RCC->APB2ENR |= RCC_APB1ENR_USART2EN;
 }
 
 void driver_uart_configure(USART_TypeDef *uart, uint32_t mantissa, uint32_t fraction) {
