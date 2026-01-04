@@ -79,7 +79,6 @@ void bsp_spi1_gpio_init()
 
 void bsp_spi1_spi_init(void)
 {
-
     uint32_t cr1 = SPI_CR1_MSTR      |  // Master
                    SPI_CR1_SSM       |  // Software NSS
                    SPI_CR1_SSI       |  // NSS high
