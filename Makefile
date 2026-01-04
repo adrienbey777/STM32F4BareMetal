@@ -18,8 +18,8 @@ CFLAGS = $(CPUFLAGS) -O0 -g -ffreestanding -nostartfiles \
          -Iiopl/uart/inc \
          -Iiopl/led/inc \
          -Iiopl/spi1/inc \
-         -Iiopl/lis3dsh/inc \
          -Iiopl/button/inc \
+         -Idevices/lis3dsh/inc \
          -Iinc \
          -DSTM32F407xx
 
@@ -40,7 +40,7 @@ iopl/uart/src/uart.c \
 iopl/led/src/led.c \
 iopl/spi1/src/spi1.c \
 iopl/button/src/button.c \
-iopl/lis3dsh/src/lis3dsh.c \
+devices/lis3dsh/src/lis3dsh.c \
 src/startup.c \
 src/main.c \
 src/main_spi.c \
