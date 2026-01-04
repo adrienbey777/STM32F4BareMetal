@@ -16,6 +16,7 @@ void bsp_button_init(void) {
 }
 
 BspButtonState bsp_button_getstate(void) {
+    // Lire l'état du bouton
     if (driver_button_read_pin(BSP_BUTTON_PORT, BSP_BUTTON_PIN) != 0u) {
         return BSP_BUTTON_SET;
     } else {

@@ -4,7 +4,6 @@ void driver_led_enable_clock(GPIO_TypeDef *port, uint32_t en_mask)
 {
     if (port == GPIOD)
         RCC->AHB1ENR |= en_mask;
-    // ajouter autres ports si nécessaire
 }
 
 void driver_led_set_mode(GPIO_TypeDef *port, uint8_t pin, uint8_t mode)
