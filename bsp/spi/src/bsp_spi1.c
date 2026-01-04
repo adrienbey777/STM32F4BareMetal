@@ -13,7 +13,8 @@ void bsp_spi1_lis3dsh_cs_high(void) {
 
 static void bsp_spi1_gpio_enable_clock(void)
 {
-    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOEEN;
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOEEN; // GPIO spécifiques
+    driver_spi_enable_clock(SPI1);  // Horloge SPI générique
 }
 
 static void bsp_spi1_init_pins(void)
@@ -78,8 +79,6 @@ void bsp_spi1_gpio_init()
 
 void bsp_spi1_spi_init(void)
 {
-    // Activer SPI1 clock
-    driver_spi_enable_clock(SPI1);
 
     uint32_t cr1 = SPI_CR1_MSTR      |  // Master
                    SPI_CR1_SSM       |  // Software NSS

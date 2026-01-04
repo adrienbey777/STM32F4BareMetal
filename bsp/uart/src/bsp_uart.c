@@ -4,8 +4,8 @@
 
 static void bsp_uart_enable_clock(void)
 {
-    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
-    driver_uart_enable_clock(USART2);
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN; // GPIO spécifiques
+    driver_uart_enable_clock(USART2); // Horloge UART générique
 }
 
 static void bsp_uart_init_pins(void)
