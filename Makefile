@@ -8,9 +8,8 @@ CFLAGS = $(CPUFLAGS) -O0 -g -ffreestanding -nostartfiles \
          -Icmsis-device-f4/Include \
          -Icmsis-device-f4/core/Include \
          -Idrivers/uart/inc \
-         -Idrivers/led/inc \
+         -Idrivers/gpio/inc \
          -Idrivers/spi/inc \
-         -Idrivers/button/inc \
          -Ibsp/spi/inc \
          -Ibsp/uart/inc \
          -Ibsp/button/inc \
@@ -30,8 +29,7 @@ LDFLAGS = $(CPUFLAGS) -T linker/stm32f4.ld
 SRC = \
 drivers/spi/src/driver_spi.c \
 drivers/uart/src/driver_uart.c \
-drivers/button/src/driver_button.c \
-drivers/led/src/driver_led.c \
+drivers/gpio/src/driver_gpio.c \
 bsp/spi/src/bsp_spi1.c \
 bsp/uart/src/bsp_uart.c \
 bsp/button/src/bsp_button.c \
