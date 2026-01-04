@@ -1,4 +1,5 @@
 #include "stm32f4xx.h"
+#include "driver_spi.h"
 #include "bsp_spi1.h"
 
 // CS LIS3DSH 
@@ -78,27 +79,20 @@ void bsp_spi1_gpio_init()
 void bsp_spi1_spi_init(void)
 {
     // Activer SPI1 clock
-    RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
+    driver_spi_enable_clock(SPI1);
 
-    SPI1->CR1 = 0;
-    SPI1->CR1 |= SPI_CR1_MSTR;                // Master
-    SPI1->CR1 |= SPI_CR1_SSM | SPI_CR1_SSI;   // Software NSS
-    SPI1->CR1 |= SPI_CR1_CPOL | SPI_CR1_CPHA; // Mode 3
-    SPI1->CR1 |= (0x4 << SPI_CR1_BR_Pos);     // fPCLK/32
-    SPI1->CR1 |= SPI_CR1_SPE;                 // Enable
+    uint32_t cr1 = SPI_CR1_MSTR      |  // Master
+                   SPI_CR1_SSM       |  // Software NSS
+                   SPI_CR1_SSI       |  // NSS high
+                   SPI_CR1_CPOL      |  // Mode 3
+                   SPI_CR1_CPHA      |  // Mode 3
+                   (0x4 << SPI_CR1_BR_Pos); // fPCLK/32
+    driver_spi_configure(SPI1, cr1);
 }
-
 
 // Transfert SPI
 
 uint8_t bsp_spi1_transfer(uint8_t data)
 {
-    while (!(SPI1->SR & SPI_SR_TXE));
-    *((volatile uint8_t *)&SPI1->DR) = data;
-
-    while (!(SPI1->SR & SPI_SR_RXNE));
-    uint8_t rx = *((volatile uint8_t *)&SPI1->DR);
-
-    while (SPI1->SR & SPI_SR_BSY);
-    return rx;
+    return driver_spi_transfer(SPI1, data);
 }
