@@ -16,7 +16,7 @@ It demonstrates low-level peripheral programming (SPI, UART, GPIO) without an RT
 
 The projects are divided into independent examples, each with its own `main` file:
 - `main_spi.c` → SPI project (LIS3DSH accelerometer + LED control)
-- `main_uart.c` → UART project (User button + LED feedback)
+- `main_uart.c` → UART project (User button + LED feedback)  
 In main.c, you have to set #define USE_MAIN: 1 for the SPI project, 2 for the UART project.
 
 Common drivers for GPIO, SPI, and UART are shared across all projects
