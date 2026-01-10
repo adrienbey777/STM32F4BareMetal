@@ -9,9 +9,11 @@
 #include "button.h"
 #include "delay.h"
 #include "led.h"
+#include "system.h"
 
 void main_uart(void)
 {
+    system_init();
     button_init();
     uart_init(115200u);
 
@@ -31,7 +33,7 @@ void main_uart(void)
         {
             uart_send_string("RESET\n"); // Reset
         }
-        delay(10000); // ~0.6ms at 168MHz
+        delay(10000u); // ~0.6ms at 168MHz
     }
     //UART RENODE
     //sysbus.gpioPortA.UserButton Press

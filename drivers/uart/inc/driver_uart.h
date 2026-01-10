@@ -8,7 +8,7 @@
 void driver_uart_enable_clock(USART_TypeDef *uart);
 
 // Configure BRR et CR1
-void driver_uart_configure(USART_TypeDef *uart, uint32_t mantissa, uint32_t fraction);
+void driver_uart_configure(USART_TypeDef *uart, uint32_t brr);
 
 // Envoi
 void driver_uart_send_char(USART_TypeDef *uart, char c);
