@@ -102,6 +102,11 @@ I connected the PA2 (TX) pin of the microcontroller to the RX pin of the CP2102 
 The tests were carried out using Tera Term, configured with a 115200 baud rate, 8 data bits, no parity, 1 stop bit (8N1), and no flow control. 
 The corresponding serial port was selected, and messages were transmitted to validate data transmission. 
 <img width="483" height="162" alt="tera_main_uart" src="https://github.com/user-attachments/assets/f599e93c-dc72-4742-b37e-ae792b2a17f1" />
-![STM32 with CP2102](https://github.com/user-attachments/assets/5faaac51-8cf3-4e97-8de7-0121a3f80bb4)
+
+![stm32 with cp2102](https://github.com/user-attachments/assets/cd105bea-9c12-402b-800f-7d9fcedd88c0)
+
+
+
+
 
 </details>
