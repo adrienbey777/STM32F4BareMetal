@@ -19,7 +19,7 @@ void main_uart(void)
 
     ButtonEvent lEvent;
 
-    uart_send_string("Begin\n"); 
+    uart_send_string("Begin\r\n"); 
 
     while (1)
     {
@@ -27,11 +27,11 @@ void main_uart(void)
         if (lEvent == BUTTON_EVENT_SET)
         {
             led_toggle(LED_GREEN);
-            uart_send_string("SET\n"); // Set
+            uart_send_string("SET\r\n"); // Set
         }
         else if (lEvent == BUTTON_EVENT_RESET)
         {
-            uart_send_string("RESET\n"); // Reset
+            uart_send_string("RESET\r\n"); // Reset
         }
         delay(10000u); // ~0.6ms at 168MHz
     }

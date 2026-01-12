@@ -24,12 +24,12 @@ static void bsp_uart_init_pins(void)
 }
 
 static void bsp_uart_configure(uint32_t baudrate) {
-    uint32_t pclk1 = 42000000;  // APB1 à 42 MHz
-    float usartdiv = (float)pclk1 / (16.0f * baudrate);
-    uint32_t mantissa = (uint32_t)usartdiv;
-    uint32_t fraction = (uint32_t)((usartdiv - mantissa) * 16.0f); 
-    uint32_t brr = (mantissa << 4) | (fraction & 0xF);
-    driver_uart_configure(USART2, brr);
+    uint32_t lPclk1 = 42000000;  // APB1 à 42 MHz
+    float lUsartdiv = (float)lPclk1 / (16.0f * baudrate);
+    uint32_t lMantissa = (uint32_t)lUsartdiv;
+    uint32_t lFraction = (uint32_t)((lUsartdiv - lMantissa) * 16.0f); 
+    uint32_t lBrr = (lMantissa << 4) | (lFraction & 0xF);
+    driver_uart_configure(USART2, lBrr);
 }
 
 void bsp_uart_init(uint32_t baudrate) {
