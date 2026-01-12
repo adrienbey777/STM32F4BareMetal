@@ -97,4 +97,8 @@ Simulate button press and release:
 sysbus.gpioPortA.UserButton Press   # simulates pressing PA0 
 sysbus.gpioPortA.UserButton Release # simulates releasing PA0 
 
+Update (12/01/2026) : 
+I connected the PA2 (TX) pin of the microcontroller to the RX pin of the CP2102 in order to verify proper UART communication. 
+The tests were carried out using Tera Term, configured with a 115200 baud rate, 8 data bits, no parity, 1 stop bit (8N1), and no flow control. 
+The corresponding serial port was selected, and messages were transmitted to validate data transmission. 
 </details>
