@@ -98,7 +98,10 @@ sysbus.gpioPortA.UserButton Press   # simulates pressing PA0
 sysbus.gpioPortA.UserButton Release # simulates releasing PA0 
 
 Update (12/01/2026) : 
-I connected the PA2 (TX) pin of the microcontroller to the RX pin of the CP2102 in order to verify proper UART communication. 
+I connected the PA2 (TX) pin of the microcontroller to the RX pin of the CP2102 (and GND with GND) in order to verify proper UART communication. 
 The tests were carried out using Tera Term, configured with a 115200 baud rate, 8 data bits, no parity, 1 stop bit (8N1), and no flow control. 
 The corresponding serial port was selected, and messages were transmitted to validate data transmission. 
+<img width="483" height="162" alt="tera_main_uart" src="https://github.com/user-attachments/assets/f599e93c-dc72-4742-b37e-ae792b2a17f1" />
+![STM32 with CP2102](https://github.com/user-attachments/assets/5faaac51-8cf3-4e97-8de7-0121a3f80bb4)
+
 </details>
