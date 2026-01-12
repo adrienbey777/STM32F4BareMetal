@@ -92,9 +92,9 @@ This example demonstrates how to handle the user button input and send feedback 
 - The program runs in an infinite loop to continuously monitor the button and update the LED in real time.
 
 On renode :
-Launch the simulation with the STM32F4BareMetal.resc with renode installed.
-Simulate button press and release:
-sysbus.gpioPortA.UserButton Press   # simulates pressing PA0
-sysbus.gpioPortA.UserButton Release # simulates releasing PA0
+Launch the simulation with the STM32F4BareMetal.resc with renode installed. 
+Simulate button press and release: 
+sysbus.gpioPortA.UserButton Press   # simulates pressing PA0 
+sysbus.gpioPortA.UserButton Release # simulates releasing PA0 
 
 </details>
